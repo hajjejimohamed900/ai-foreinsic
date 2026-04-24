@@ -1,0 +1,2146 @@
+{
+    "integrity": {
+        "sourceFile": "logs_syslog.ndjson",
+        "status": "Verified",
+        "method": "IA Co-Pilot v2.5",
+        "hash": "07a399af99254c99fcb9341e32f5fd34d14f1903a57809c0453abca5075debfa"
+    },
+    "storylines": [
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 6 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 6
+            },
+            "timeline": [
+                {
+                    "time": "08:05:00",
+                    "sourceIp": "45.33.22.11",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for admin from 45.33.22.11 port 52232 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:05:10",
+                    "sourceIp": "45.33.22.11",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 45.33.22.11 port 52234 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:05:20",
+                    "sourceIp": "45.33.22.11",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for support from 45.33.22.11 port 52236 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:05:30",
+                    "sourceIp": "45.33.22.11",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 45.33.22.11 port 52238 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:05:40",
+                    "sourceIp": "45.33.22.11",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for admin from 45.33.22.11 port 52240 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:06:00",
+                    "sourceIp": "45.33.22.11",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Accepted password for root from 45.33.22.11 port 52242 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 10-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 2,
+            "svcStats": {
+                "KERNEL": 2,
+                "IPTABLES": 1
+            },
+            "timeline": [
+                {
+                    "time": "10:00:00",
+                    "sourceIp": "62.142.32.148",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 62.142.32.148",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "10:00:05",
+                    "sourceIp": "62.142.32.148",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 62.142.32.148",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "10:10:00",
+                    "sourceIp": "62.142.32.148",
+                    "service": "IPTABLES",
+                    "phase": "Detection",
+                    "action": "IPTABLES",
+                    "details": "Dropped 5430 packets from source 62.142.32.148",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 9-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 2,
+            "svcStats": {
+                "KERNEL": 2,
+                "IPTABLES": 1
+            },
+            "timeline": [
+                {
+                    "time": "10:00:10",
+                    "sourceIp": "219.61.216.178",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 219.61.216.178",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "10:00:15",
+                    "sourceIp": "219.61.216.178",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 219.61.216.178",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "10:10:05",
+                    "sourceIp": "219.61.216.178",
+                    "service": "IPTABLES",
+                    "phase": "Detection",
+                    "action": "IPTABLES",
+                    "details": "Dropped 4210 packets from source 219.61.216.178",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 9-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 2,
+            "svcStats": {
+                "KERNEL": 2,
+                "IPTABLES": 1
+            },
+            "timeline": [
+                {
+                    "time": "10:00:20",
+                    "sourceIp": "114.54.37.129",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 114.54.37.129",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "10:00:25",
+                    "sourceIp": "114.54.37.129",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 114.54.37.129",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "10:10:10",
+                    "sourceIp": "114.54.37.129",
+                    "service": "IPTABLES",
+                    "phase": "Detection",
+                    "action": "IPTABLES",
+                    "details": "Dropped 3100 packets from source 114.54.37.129",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "SYSTEMD": 1
+            },
+            "timeline": [
+                {
+                    "time": "10:05:00",
+                    "sourceIp": "HIDDEN-SOURCE",
+                    "service": "SYSTEMD",
+                    "phase": "Detection",
+                    "action": "SYSTEMD",
+                    "details": "Connection limit reached on port 443",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 3
+            },
+            "timeline": [
+                {
+                    "time": "11:05:00",
+                    "sourceIp": "99.88.77.66",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/users?id=1' OR 1=1 -- from 99.88.77.66",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "11:05:05",
+                    "sourceIp": "99.88.77.66",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/users?id=1 UNION SELECT 1,username,password FROM users -- from 99.88.77.66",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "11:05:10",
+                    "sourceIp": "99.88.77.66",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/config?file=../../etc/passwd from 99.88.77.66",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "POSTGRES": 1
+            },
+            "timeline": [
+                {
+                    "time": "11:06:00",
+                    "sourceIp": "HIDDEN-SOURCE",
+                    "service": "POSTGRES",
+                    "phase": "Detection",
+                    "action": "POSTGRES",
+                    "details": "Unauthorized query detected on table 'users' by webapp_user",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 3
+            },
+            "timeline": [
+                {
+                    "time": "14:00:00",
+                    "sourceIp": "1.2.3.4",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 1.2.3.4 port 43312 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "14:00:05",
+                    "sourceIp": "1.2.3.4",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 1.2.3.4 port 43314 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "14:00:10",
+                    "sourceIp": "1.2.3.4",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 1.2.3.4 port 43316 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 1
+            },
+            "timeline": [
+                {
+                    "time": "16:00:00",
+                    "sourceIp": "1.2.3.4",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Disconnected from authenticating user root 1.2.3.4 port 43316 [preauth]",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 2
+            },
+            "timeline": [
+                {
+                    "time": "09:00:00",
+                    "sourceIp": "8.8.8.8",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for user guest from 8.8.8.8 port 12345 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "09:00:10",
+                    "sourceIp": "8.8.8.8",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for user guest from 8.8.8.8 port 12347 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 2,
+            "svcStats": {
+                "KERNEL": 2,
+                "IPTABLES": 1
+            },
+            "timeline": [
+                {
+                    "time": "11:00:00",
+                    "sourceIp": "5.5.5.5",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 80 from 5.5.5.5",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "11:00:10",
+                    "sourceIp": "5.5.5.5",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 80 from 5.5.5.5",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "11:01:00",
+                    "sourceIp": "5.5.5.5",
+                    "service": "IPTABLES",
+                    "phase": "Detection",
+                    "action": "IPTABLES",
+                    "details": "Blacklisted IP 5.5.5.5 for 3600 seconds",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 5-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 2,
+            "svcStats": {
+                "SSHD": 2,
+                "BASH": 1
+            },
+            "timeline": [
+                {
+                    "time": "15:00:00",
+                    "sourceIp": "10.0.0.25",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 10.0.0.25 port 55442 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "15:01:00",
+                    "sourceIp": "10.0.0.25",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Accepted password for root from 10.0.0.25 port 55445 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "15:05:00",
+                    "sourceIp": "10.0.0.25",
+                    "service": "BASH",
+                    "phase": "Detection",
+                    "action": "BASH",
+                    "details": "Command executed: rm -rf /var/log/* by root from 10.0.0.25",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "SYSLOG-111",
+            "targetIp": "108.173.95.128",
+            "siteLocation": "111 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SURICATA": 1
+            },
+            "timeline": [
+                {
+                    "time": "16:00:00",
+                    "sourceIp": "10.0.0.25",
+                    "service": "SURICATA",
+                    "phase": "Detection",
+                    "action": "SURICATA",
+                    "details": "Suspicious shell activity detected on SGW-045 from 10.0.0.25",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:00",
+                    "sourceIp": "1.1.1.1",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.1",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:05",
+                    "sourceIp": "1.1.1.2",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:10",
+                    "sourceIp": "1.1.1.3",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.3",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:15",
+                    "sourceIp": "1.1.1.4",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.4",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:20",
+                    "sourceIp": "1.1.1.5",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.5",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:25",
+                    "sourceIp": "1.1.1.6",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.6",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:30",
+                    "sourceIp": "1.1.1.7",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.7",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:35",
+                    "sourceIp": "1.1.1.8",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.8",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:40",
+                    "sourceIp": "1.1.1.9",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.9",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:00:45",
+                    "sourceIp": "1.1.1.10",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 1.1.1.10",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "SYSTEMD": 1
+            },
+            "timeline": [
+                {
+                    "time": "08:05:00",
+                    "sourceIp": "HIDDEN-SOURCE",
+                    "service": "SYSTEMD",
+                    "phase": "Detection",
+                    "action": "SYSTEMD",
+                    "details": "SGW-049 kernel panic imminent: exhausting memory from SYN backlog",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 2
+            },
+            "timeline": [
+                {
+                    "time": "09:00:00",
+                    "sourceIp": "99.88.77.66",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /etc/shadow?dump=true from 99.88.77.66",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "09:00:05",
+                    "sourceIp": "99.88.77.66",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /admin?user=admin'-- from 99.88.77.66",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 2
+            },
+            "timeline": [
+                {
+                    "time": "11:00:00",
+                    "sourceIp": "14.14.14.14",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for nobody from 14.14.14.14 port 56789 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "11:01:00",
+                    "sourceIp": "14.14.14.14",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for nobody from 14.14.14.14 port 56790 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 2
+            },
+            "timeline": [
+                {
+                    "time": "09:00:00",
+                    "sourceIp": "77.77.77.77",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/v2/search?q=<script>alert(1)</script> from 77.77.77.77",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "09:00:10",
+                    "sourceIp": "77.77.77.77",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/v2/search?q=<iframe src='javascript:alert(1)'> from 77.77.77.77",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 2-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 3
+            },
+            "timeline": [
+                {
+                    "time": "14:00:00",
+                    "sourceIp": "33.33.33.33",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for admin from 33.33.33.33 port 4545 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "14:01:00",
+                    "sourceIp": "33.33.33.33",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for admin from 33.33.33.33 port 4547 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "14:02:00",
+                    "sourceIp": "33.33.33.33",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Accepted password for admin from 33.33.33.33 port 4549 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 5-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 2
+            },
+            "timeline": [
+                {
+                    "time": "15:00:00",
+                    "sourceIp": "33.33.33.33",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /backup.sql HTTP/1.1 from 33.33.33.33",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "15:05:00",
+                    "sourceIp": "33.33.33.33",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /config.php.bak HTTP/1.1 from 33.33.33.33",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 2
+            },
+            "timeline": [
+                {
+                    "time": "09:00:00",
+                    "sourceIp": "4.4.4.4",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 8080 from 4.4.4.4",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "09:00:05",
+                    "sourceIp": "4.4.4.4",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 8080 from 4.4.4.4",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 2
+            },
+            "timeline": [
+                {
+                    "time": "12:00:00",
+                    "sourceIp": "9.9.9.9",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for ftp from 9.9.9.9 port 65432 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "12:01:00",
+                    "sourceIp": "9.9.9.9",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for ftp from 9.9.9.9 port 65434 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 3
+            },
+            "timeline": [
+                {
+                    "time": "09:00:00",
+                    "sourceIp": "172.16.0.100",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 172.16.0.100 port 33221 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "09:00:10",
+                    "sourceIp": "172.16.0.100",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 172.16.0.100 port 33223 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "09:01:00",
+                    "sourceIp": "172.16.0.100",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Accepted password for root from 172.16.0.100 port 33225 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 2
+            },
+            "timeline": [
+                {
+                    "time": "10:00:00",
+                    "sourceIp": "172.16.0.100",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/v1/dump?table=inventory from 172.16.0.100",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "10:01:00",
+                    "sourceIp": "172.16.0.100",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/v1/dump?table=clients from 172.16.0.100",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "HSS-032",
+            "targetIp": "10.20.5.5",
+            "siteLocation": "032 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "DIAMETER": 2
+            },
+            "timeline": [
+                {
+                    "time": "11:00:00",
+                    "sourceIp": "10.20.5.10",
+                    "service": "DIAMETER",
+                    "phase": "Detection",
+                    "action": "DIAMETER",
+                    "details": "Unexpected message size from peer 10.20.5.10",
+                    "alert": true,
+                    "c": "#F39619"
+                },
+                {
+                    "time": "11:01:00",
+                    "sourceIp": "10.20.5.10",
+                    "service": "DIAMETER",
+                    "phase": "Detection",
+                    "action": "DIAMETER",
+                    "details": "Rejecting oversized packet from 10.20.5.10",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 2
+            },
+            "timeline": [
+                {
+                    "time": "13:00:00",
+                    "sourceIp": "1.2.3.4",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 22 from 1.2.3.4",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "13:00:05",
+                    "sourceIp": "1.2.3.4",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 22 from 1.2.3.4",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 3 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 3
+            },
+            "timeline": [
+                {
+                    "time": "08:00:00",
+                    "sourceIp": "123.123.123.123",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for user test from 123.123.123.123 port 11111 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:00:10",
+                    "sourceIp": "123.123.123.123",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for user test from 123.123.123.123 port 11112 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "08:00:20",
+                    "sourceIp": "123.123.123.123",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for user test from 123.123.123.123 port 11113 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S3",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-049",
+            "targetIp": "132.58.33.103",
+            "siteLocation": "049 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Enable TCP SYN Cookies (sysctl).",
+            "services": 1,
+            "svcStats": {
+                "KERNEL": 2
+            },
+            "timeline": [
+                {
+                    "time": "09:00:00",
+                    "sourceIp": "9.8.7.6",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 9.8.7.6",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "09:00:05",
+                    "sourceIp": "9.8.7.6",
+                    "service": "KERNEL",
+                    "phase": "Detection",
+                    "action": "KERNEL",
+                    "details": "TCP: Possible SYN flood on port 443 from 9.8.7.6",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Enable TCP SYN Cookies (sysctl).",
+                "Implement per-IP rate limiting at the edge firewall.",
+                "Increase TCP backlog queue.",
+                "Activate SOTETEL Scrubbing Center."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 1
+            },
+            "timeline": [
+                {
+                    "time": "10:00:00",
+                    "sourceIp": "55.44.33.22",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /api/v1/users?id=1'; DROP TABLE users; -- from 55.44.33.22",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        },
+        {
+            "id": "FR-2026-S1",
+            "title": "SECURITY ANOMALY",
+            "risk": "CRITICAL",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#E53842",
+            "mitre": "T1000",
+            "targetHost": "SGW-045",
+            "targetIp": "192.168.1.45",
+            "siteLocation": "045 Datacenter",
+            "narrative": "This session identifies a 1-minute campaign involving 2 anomalous events. Analyzing behavior...",
+            "recommendation": "Block source IP via iptables/Fail2Ban.",
+            "services": 1,
+            "svcStats": {
+                "SSHD": 2
+            },
+            "timeline": [
+                {
+                    "time": "14:00:00",
+                    "sourceIp": "11.22.33.44",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Failed password for root from 11.22.33.44 port 22222 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                },
+                {
+                    "time": "14:01:00",
+                    "sourceIp": "11.22.33.44",
+                    "service": "SSHD",
+                    "phase": "Detection",
+                    "action": "SSHD",
+                    "details": "Accepted password for root from 11.22.33.44 port 22225 ssh2",
+                    "alert": true,
+                    "c": "#E53842"
+                }
+            ],
+            "playbook": [
+                "Block source IP via iptables/Fail2Ban.",
+                "Disable password-based SSH authentication.",
+                "Enforce RSA-4096 Public Key auth.",
+                "Change default SSH port."
+            ]
+        },
+        {
+            "id": "FR-2026-S4",
+            "title": "SECURITY ANOMALY",
+            "risk": "HIGH",
+            "date": "2026-04-24",
+            "sparkline": [
+                1,
+                2,
+                4,
+                1,
+                5,
+                2,
+                1
+            ],
+            "color": "#F39619",
+            "mitre": "T1000",
+            "targetHost": "DB-SRV-01",
+            "targetIp": "10.50.1.10",
+            "siteLocation": "01 Datacenter",
+            "narrative": "This session identifies a 0-minute campaign involving 1 anomalous events. Analyzing behavior...",
+            "recommendation": "Isolate web application from DB network.",
+            "services": 1,
+            "svcStats": {
+                "NGINX": 1
+            },
+            "timeline": [
+                {
+                    "time": "15:00:00",
+                    "sourceIp": "11.22.33.44",
+                    "service": "NGINX",
+                    "phase": "Detection",
+                    "action": "NGINX",
+                    "details": "GET /private/key.pem from 11.22.33.44",
+                    "alert": true,
+                    "c": "#F39619"
+                }
+            ],
+            "playbook": [
+                "Isolate web application from DB network.",
+                "Implement Parameterized Queries (Prepared Statements).",
+                "Update WAF to block UNION/SELECT patterns.",
+                "Apply Least Privilege to DB roles."
+            ]
+        }
+    ],
+    "latestPdfUrl": "/api/archives/Forensic_Report_20260424.pdf"
+}
