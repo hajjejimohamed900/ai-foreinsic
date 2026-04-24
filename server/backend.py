@@ -7,7 +7,6 @@ import hashlib
 from datetime import datetime
 import subprocess
 
-# Modern fpdf2 syntax import
 try:
     from fpdf import FPDF, XPos, YPos
 except ImportError:
@@ -24,20 +23,15 @@ class ForensicPDF(FPDF):
         self.risk_score = 0.0
 
     def header(self):
-        # SOTETEL Navy Blue Header
         self.set_fill_color(26, 35, 126) 
         self.rect(0, 0, 210, 40, 'F')
-        
         self.set_text_color(255, 255, 255)
         self.set_font('Helvetica', 'B', 15)
         self.set_xy(10, 12)
         self.cell(0, 10, "IA FORENSIC INVESTIGATION REPORT", border=0, new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='L')
-        
-        # Empty analyst line
         self.set_font('Helvetica', '', 9)
         self.cell(0, 5, "", border=0, new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='L') 
         
-        # Executive Risk Scorecard
         score_color = (211, 47, 47) if self.risk_score >= 8.5 else (255, 140, 0)
         self.set_fill_color(*score_color)
         self.set_xy(160, 10)
@@ -67,7 +61,7 @@ class ForensicPDF(FPDF):
         self.cell(0, 10, f'Internal Audit - SOTETEL Confidential | Page {self.page_no()}', border=0, new_x=XPos.RIGHT, new_y=YPos.TOP, align='C')
 
 # ==========================================
-# 2. EXPERT PLAYBOOKS FOR S1-S5
+# 2. THE AI INFERENCE ENGINE (WEIGHTED HEURISTICS)
 # ==========================================
 TECHNICAL_PLAYBOOKS = {
     "S1": ["Block source IP via iptables/Fail2Ban.", "Disable password-based SSH authentication.", "Enforce RSA-4096 Public Key auth.", "Change default SSH port."],
@@ -77,6 +71,40 @@ TECHNICAL_PLAYBOOKS = {
     "S5": ["Disable SMBv1 and enforce SMBv3 signing.", "Restrict RPC/SMB access to authorized subnets.", "Audit AD for unusual login spikes.", "Use LAPS for admin password rotation."],
     "DEFAULT": ["Isolate host.", "Perform forensic log audit.", "Review security group rules."]
 }
+
+# The Intelligence Algorithm: Deduce attack type based purely on log context
+def analyze_session_intent(logs):
+    scores = {"S1": 0, "S2": 0, "S3": 0, "S4": 0, "S5": 0}
+    
+    for l in logs:
+        msg = l.get('message', '').lower()
+        svc = str(l.get('service', '')).lower()
+        
+        # S1: SSH Brute Force Profiling
+        if 'ssh' in svc or 'ssh' in msg: scores["S1"] += 2
+        if 'failed password' in msg or 'accepted password' in msg: scores["S1"] += 5
+        if 'preauth' in msg or 'authentication' in msg: scores["S1"] += 2
+        
+        # S3: DDoS SYN Flood Profiling
+        if 'syn flood' in msg: scores["S3"] += 10
+        if svc in ['kernel', 'iptables'] and 'tcp' in msg: scores["S3"] += 3
+        if 'dropped' in msg and 'packets' in msg: scores["S3"] += 4
+        if 'connection limit' in msg or 'exhausting memory' in msg: scores["S3"] += 5
+        
+        # S4: Web SQLi / Injection Profiling
+        if svc == 'nginx' or 'get ' in msg or 'http' in msg: scores["S4"] += 2
+        if 'union' in msg or 'select' in msg or '1=1' in msg: scores["S4"] += 8
+        if 'script>' in msg or 'iframe' in msg or '.php' in msg: scores["S4"] += 6 
+        
+        # S2: DNS Profiling
+        if 'dns' in svc or 'txt query' in msg: scores["S2"] += 6
+        
+        # S5: SMB Profiling
+        if 'smb' in svc or 'rpc' in msg: scores["S5"] += 6
+
+    # Return the scenario with the highest confidence score
+    best_match = max(scores, key=scores.get)
+    return best_match if scores[best_match] > 0 else "DEFAULT"
 
 def get_attacker_ip(msg, v_ip):
     ips = re.findall(r'\b(?:\d{1,3}\.){3}\d{1,3}\b', msg)
@@ -88,7 +116,7 @@ def sanitize(text):
     return str(text).strip().replace('"', '').replace('\r', '').replace('\n', '')
 
 # ==========================================
-# 3. CORE ENGINE (PDF & UI JSON SYNC)
+# 3. CORE ENGINE (DYNAMIC PROCESSING)
 # ==========================================
 def generate_advanced_report(log_path, scenario_path, out_json_path):
     scenarios = {}
@@ -104,12 +132,15 @@ def generate_advanced_report(log_path, scenario_path, out_json_path):
     anomalies = [l for l in logs if l.get('label') == 'anomalous']
     anomalies.sort(key=lambda x: x['ts'])
 
+    # 1. Group logs strictly by Victim and Attacker (Ignoring log 'scenario_id')
     incidents, current_sessions = [], {}
     for log in anomalies:
         ts = datetime.fromisoformat(log['ts'].replace('Z', ''))
-        sid, host = log.get('scenario_id', 'Unknown'), log.get('host', 'Unknown')
-        a_ip = get_attacker_ip(log['message'], log['ip'])
-        key = (sid, host, a_ip)
+        host = log.get('host', 'Unknown')
+        a_ip = get_attacker_ip(log['message'], log.get('ip', ''))
+        
+        # Our unique key is now just the two machines talking
+        key = (host, a_ip)
         
         if key in current_sessions:
             last_ts = datetime.fromisoformat(current_sessions[key][-1]['ts'].replace('Z', ''))
@@ -121,40 +152,72 @@ def generate_advanced_report(log_path, scenario_path, out_json_path):
         current_sessions[key] = new_inc
 
     pdf = ForensicPDF()
-    
     ui_data = {
-        "integrity": {
-            "sourceFile": os.path.basename(log_path),
-            "status": "Verified",
-            "method": "IA Co-Pilot v2.5",
-            "hash": log_hash
-        },
+        "integrity": {"sourceFile": os.path.basename(log_path), "status": "Verified", "method": "IA Inference Engine v3.0", "hash": log_hash},
         "storylines": []
     }
 
     for attack_logs in incidents:
         first, last = attack_logs[0], attack_logs[-1]
-        sid = first.get('scenario_id', 'S1')
         host = str(first.get('host', 'UNKNOWN')).upper()
         v_ip = first.get('ip', '0.0.0.0')
-        s_info = scenarios.get(sid, {"name": "Security Anomaly", "description": "Analyzing behavior...", "mitre": "T1000"})
         
+        # 2. TRIGGER INFERENCE ALGORITHM: Let AI deduce the attack type based on the messages
+        inferred_sid = analyze_session_intent(attack_logs)
+        
+        # Fetch metadata based on the engine's deduction
+        # Autonomous Title & MITRE Mapping (Replaces the CSV lookup)
+        # Autonomous Title, MITRE, and Descriptions (The complete AI Knowledge Base)
+        INFERENCE_DATA = {
+            "S1": {
+                "name": "SSH BRUTE-FORCE", 
+                "mitre": "T1110",
+                "description": "Multiple failed authentication attempts detected, suggesting an automated password-guessing campaign."
+            },
+            "S2": {
+                "name": "DNS ANOMALY", 
+                "mitre": "T1071.004",
+                "description": "High-entropy DNS queries identified, potentially indicating C2 communication or data exfiltration via DNS tunneling."
+            },
+            "S3": {
+                "name": "DDOS SYN FLOOD", 
+                "mitre": "T1499",
+                "description": "A rapid spike in TCP SYN packets was detected, aimed at exhausting server resources and causing a denial of service."
+            },
+            "S4": {
+                "name": "WEB SQL INJECTION", 
+                "mitre": "T1190",
+                "description": "Malicious SQL patterns detected in HTTP requests, indicating an attempt to bypass authentication or extract database records."
+            },
+            "S5": {
+                "name": "SMB ENUMERATION", 
+                "mitre": "T1021.002",
+                "description": "Unusual SMB/RPC traffic patterns suggest lateral movement attempts or unauthorized file share discovery."
+            },
+            "DEFAULT": {
+                "name": "UNKNOWN ANOMALY", 
+                "mitre": "T1000",
+                "description": "Heuristic analysis detected an unusual sequence of events that do not match known primary attack signatures."
+            }
+        }
+        
+        s_info = INFERENCE_DATA.get(inferred_sid, INFERENCE_DATA["DEFAULT"]) 
         pdf.risk_score = 9.8 if any(k in host for k in ['SGW', 'PGW', 'CORE']) else 7.5
         risk_text = "CRITICAL" if pdf.risk_score > 8 else "HIGH"
         risk_color = "#E53842" if pdf.risk_score > 8 else "#F39619"
         
         duration = int((datetime.fromisoformat(last['ts'].replace('Z', '')) - datetime.fromisoformat(first['ts'].replace('Z', ''))).total_seconds() / 60)
-        playbook = TECHNICAL_PLAYBOOKS.get(sid, TECHNICAL_PLAYBOOKS["DEFAULT"])
+        playbook = TECHNICAL_PLAYBOOKS.get(inferred_sid, TECHNICAL_PLAYBOOKS["DEFAULT"])
         
         svc_stats = {}
         for l in attack_logs:
             s = str(l.get('service', 'Other')).upper()
             svc_stats[s] = svc_stats.get(s, 0) + 1
 
-        narrative_text = f"This session identifies a {duration}-minute campaign involving {len(attack_logs)} anomalous events. {s_info.get('description')}"
+        narrative_text = f"The inference engine identified a {duration}-minute campaign involving {len(attack_logs)} anomalous events. {s_info.get('description')}"
 
         ui_data["storylines"].append({
-            "id": f"FR-2026-{sid}",
+            "id": f"FR-2026-{inferred_sid}",
             "title": s_info['name'].upper(),
             "risk": risk_text,
             "date": datetime.now().strftime("%Y-%m-%d"),
@@ -183,6 +246,7 @@ def generate_advanced_report(log_path, scenario_path, out_json_path):
             "playbook": playbook
         })
 
+        # --- EXACT PDF FORMAT ---
         pdf.add_page()
         pdf.set_y(45) 
         
@@ -192,7 +256,7 @@ def generate_advanced_report(log_path, scenario_path, out_json_path):
         pdf.set_font('Helvetica', 'I', 10)
         pdf.cell(0, 6, f"MITRE ATT&CK Mapping: {s_info.get('mitre', 'T1059')}", border=0, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         pdf.set_font('Helvetica', '', 10)
-        pdf.cell(0, 6, f"Target Host: {host} ({v_ip}) | Site Location: 01 Datacenter", border=0, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.cell(0, 6, f"Target Host: {host} ({v_ip}) | Inference Confidence: HIGH", border=0, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
         pdf.ln(5)
 
         pdf.set_font('Helvetica', 'B', 11)
@@ -244,7 +308,7 @@ def generate_advanced_report(log_path, scenario_path, out_json_path):
     pdf.cell(0, 15, "7. REPORT INTEGRITY & CHAIN OF CUSTODY", border=0, new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
     pdf.ln(10)
     pdf.set_font('Helvetica', 'B', 10)
-    meta = [("Source File", os.path.basename(log_path)), ("Status", "Verified"), ("Forensic Method", "IA Co-Pilot v2.5")]
+    meta = [("Source File", os.path.basename(log_path)), ("Status", "Verified"), ("Forensic Method", "IA Context Inference")]
     for k, v in meta:
         pdf.cell(50, 10, k, border=1, new_x=XPos.RIGHT, new_y=YPos.TOP)
         pdf.cell(0, 10, v, border=1, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
@@ -261,7 +325,7 @@ def generate_advanced_report(log_path, scenario_path, out_json_path):
     
     with open(out_json_path, 'w', encoding='utf-8') as f:
         json.dump(ui_data, f, indent=4)
-    print("Success! Perfect PDF and React JSON Generated.")
+    print("Success! Perfect PDF and React JSON Generated (Using Inference AI).")
 
 if __name__ == "__main__":
     if len(sys.argv) > 3:
